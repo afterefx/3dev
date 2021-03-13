@@ -1,3 +1,18 @@
+/*
+ * Copyright 2021 The Android Open Source Project
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     https://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package com.example.androiddevchallenge
 
 import android.content.res.Configuration
@@ -31,7 +46,6 @@ import com.example.androiddevchallenge.ui.theme.ThirdDevChallengeTheme
 import com.example.androiddevchallenge.ui.theme.buttonElevation
 import com.example.androiddevchallenge.ui.theme.yellow
 
-
 @Composable
 fun WelcomeScreen() {
     val vm: MainViewModel = viewModel()
@@ -58,18 +72,20 @@ fun WelcomeScreen() {
                 }
             )
 
-            ConstraintLayout(modifier = Modifier
-                .constrainAs(buttonRow) {
-                    start.linkTo(parent.start, 8.dp)
-                    end.linkTo(parent.end, 8.dp)
-                    bottom.linkTo(parent.bottom, 32.dp)
-                }
-                .height(48.dp)
-                .fillMaxWidth()
+            ConstraintLayout(
+                modifier = Modifier
+                    .constrainAs(buttonRow) {
+                        start.linkTo(parent.start, 8.dp)
+                        end.linkTo(parent.end, 8.dp)
+                        bottom.linkTo(parent.bottom, 32.dp)
+                    }
+                    .height(48.dp)
+                    .fillMaxWidth()
             ) {
                 val (getStarted, loginButton) = createRefs()
-                TradeButton(text =
-                stringResource(R.string.GET_STARTED),
+                TradeButton(
+                    text =
+                    stringResource(R.string.GET_STARTED),
                     modifier = Modifier
                         .constrainAs(getStarted) {
                             start.linkTo(parent.start)
@@ -77,7 +93,8 @@ fun WelcomeScreen() {
                             top.linkTo(parent.top)
                         }
                         .width(176.dp),
-                    onClick = { TODO("figure out where to go when get started is clicked") })
+                    onClick = { TODO("figure out where to go when get started is clicked") }
+                )
 
                 TraderOutlinedButton(
                     text = stringResource(R.string.LOG_IN),
@@ -96,13 +113,14 @@ fun WelcomeScreen() {
                             vm,
                             AppActions.ChangeScreen(Screens.Login)
                         )
-                    })
+                    }
+                )
             }
         }
     }
 }
 
-//}
+// }
 @Composable
 fun TraderOutlinedButton(
     text: String,
@@ -133,8 +151,6 @@ fun TraderOutlinedButton(
     }
 }
 
-
-
 @Preview(
     widthDp = 360,
     heightDp = 640,
@@ -152,4 +168,3 @@ private fun myPreview() {
         WelcomeScreen()
     }
 }
-
