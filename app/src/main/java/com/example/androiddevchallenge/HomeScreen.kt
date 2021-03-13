@@ -83,20 +83,16 @@ fun HomeScreen() {
         sheetContent = { PositionScreen(scaffoldState.bottomSheetState.isExpanded) }
     ) {
         Column(
-            modifier = Modifier
-                .fillMaxSize()
+            modifier = Modifier.fillMaxSize()
         ) {
-
             Column(
-                modifier = Modifier
-//                    .fillMaxSize()
-                    .padding(16.dp)
+                modifier = Modifier.padding(horizontal = 16.dp)
             ) {
                 Row(
                     horizontalArrangement = Arrangement.SpaceEvenly,
                     modifier = Modifier
                         .fillMaxWidth()
-                        .paddingFromBaseline(64.dp)
+                        .paddingFromBaseline(48.dp)
                 ) {
                     TopButton(text = "ACCOUNT", isSelected = true, onClick = { /*TODO*/ })
                     TopButton(text = "WATCHLIST", isSelected = false, onClick = { /*TODO*/ })
@@ -166,8 +162,9 @@ fun HomeScreen() {
                 imageVector = ImageVector.vectorResource(id = R.drawable.ic_home_illos),
                 modifier = Modifier.fillMaxWidth(),
                 contentDescription = "",
-                contentScale = ContentScale.FillWidth
+//                contentScale = ContentScale.FillWidth
             )
+            Spacer(modifier = Modifier.height(32.dp))
         }
     }
 }
@@ -211,7 +208,7 @@ fun PositionScreen(isExpanded: Boolean = true, darkTheme: Boolean = isSystemInDa
     Scaffold(
         backgroundColor = if (darkTheme) gray900.copy(alpha = .8f) else white,
         topBar = {
-            Column {
+//            Column {
 //                AnimatedVisibility(isExpanded) { Spacer(Modifier.height(24.dp)) }
                 Text(
                     "Positions",
@@ -221,7 +218,7 @@ fun PositionScreen(isExpanded: Boolean = true, darkTheme: Boolean = isSystemInDa
                     textAlign = TextAlign.Center,
                     style = MaterialTheme.typography.subtitle1
                 )
-            }
+//            }
         }
     ) {
         Column(

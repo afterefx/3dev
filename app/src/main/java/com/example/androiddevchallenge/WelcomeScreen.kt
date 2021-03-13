@@ -18,6 +18,7 @@ package com.example.androiddevchallenge
 import android.content.res.Configuration
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -27,10 +28,12 @@ import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.ButtonDefaults.OutlinedBorderSize
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.OutlinedButton
+import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.ContentScale
@@ -52,7 +55,6 @@ fun WelcomeScreen() {
 
     Box(modifier = Modifier.fillMaxSize()) {
         Image(
-//            imageVector = ImageVector.vectorResource(id = R.drawable.welcome_bg),
             painter = painterResource(id = R.drawable.welcome_bg),
             contentScale = ContentScale.FillHeight,
             modifier = Modifier.fillMaxSize(),
@@ -63,7 +65,7 @@ fun WelcomeScreen() {
 
             Image(
                 imageVector = ImageVector.vectorResource(id = R.drawable.logo),
-                contentDescription = "WeTrade",
+                contentDescription = null,
                 modifier = Modifier.constrainAs(logo) {
                     top.linkTo(parent.top)
                     start.linkTo(parent.start)

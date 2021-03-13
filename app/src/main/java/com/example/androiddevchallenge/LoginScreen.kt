@@ -17,6 +17,7 @@ package com.example.androiddevchallenge
 
 import android.content.res.Configuration
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -37,6 +38,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -63,11 +65,12 @@ fun LoginScreen() {
         modifier = Modifier
             .fillMaxSize()
     ) {
-        var email by remember { mutableStateOf("") }
-        var password by remember { mutableStateOf("") }
+        var email by rememberSaveable { mutableStateOf("") }
+        var password by rememberSaveable { mutableStateOf("") }
         Box(
             modifier = Modifier
                 .fillMaxSize()
+                .background(if(isSystemInDarkTheme()) gray900 else white)
         ) {
             Column(
                 modifier = Modifier
