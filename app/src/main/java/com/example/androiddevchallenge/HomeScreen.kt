@@ -36,6 +36,7 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.BottomSheetScaffold
 import androidx.compose.material.ButtonDefaults
+import androidx.compose.material.Divider
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
@@ -235,6 +236,7 @@ fun PositionScreen(isExpanded: Boolean = true, darkTheme: Boolean = isSystemInDa
                             .fillMaxWidth()
                     ) {
                         val (
+                            divide,
                             price,
                             percent,
                             tick,
@@ -242,6 +244,10 @@ fun PositionScreen(isExpanded: Boolean = true, darkTheme: Boolean = isSystemInDa
                             picture
                         ) = createRefs()
 
+                        Divider(modifier = Modifier.fillMaxWidth().constrainAs(divide){
+                            top.linkTo(parent.top)
+                            start.linkTo(parent.start)
+                        })
                         Text(
                             "$${item.price}",
                             style = MaterialTheme.typography.body1,
@@ -251,9 +257,10 @@ fun PositionScreen(isExpanded: Boolean = true, darkTheme: Boolean = isSystemInDa
                                     start.linkTo(parent.start, 8.dp)
                                 }
                         )
+                        val isPos = item.numberAdj == numberAdj.POS
                         Text(
-                            text = item.percentage,
-                            color = if (item.numberAdj == numberAdj.POS) custom1 else custom2,
+                            text = "${if(isPos) "+" else "-"}${item.percentage}%",
+                            color = if (isPos) custom1 else custom2,
                             style = MaterialTheme.typography.body1,
                             modifier = Modifier
                                 .paddingFromBaseline(40.dp)

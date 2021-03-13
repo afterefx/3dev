@@ -32,7 +32,7 @@ data class Position(
 val positions = listOf(
     Position(
         "7,918",
-        "0.54%",
+        "0.54",
         numberAdj.NEG,
         "ALK",
         "Alaska Air Group, Inc.",
